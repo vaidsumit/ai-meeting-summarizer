@@ -16,4 +16,16 @@ You may need to change these settings:
  line 13 for S3 bucket name ( as of now, I am using mine as  'my-meeting-audio-bucket-svaid01')
  line 93: any specific model you are using - if other than Titan lite -- modelId="amazon.titan-text-lite-v1",
 
+# setup:
+pip install moviepy boto3 requests
 
+# Requirements
+Python 3.8+
+AWS credentials with access to:
+S3
+Transcribe
+Bedrock
+
+
+# Author:
+Sumit Vaid
