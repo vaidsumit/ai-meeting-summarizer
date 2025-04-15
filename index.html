@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meeting Summarizer</title>
+</head>
+<body>
+  <h2>Upload your MP4 file</h2>
+  <input type="file" id="fileInput" accept="video/mp4">
+  <button onclick="upload()">Upload</button>
+
+  <h3>Summary:</h3>
+  <pre id="output">Waiting...</pre>
+
+  <script>
+    async function upload() {
+      const fileInput = document.getElementById("fileInput");
+      const file = fileInput.files[0];
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      document.getElementById("output").textContent = "Uploading and summarizing...";
+
+      const response = await fetch("/upload", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+      document.getElementById("output").textContent = result.summary || result.error;
+    }
+  </script>
+</body>
+</html>
